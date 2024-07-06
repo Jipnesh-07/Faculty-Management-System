@@ -3,8 +3,8 @@ import {
   LightModeOutlined,
   DarkModeOutlined,
   Menu as MenuIcon,
-  Search,
-  SettingsOutlined,
+  // Search,
+  // SettingsOutlined,
   ArrowDropDownOutlined,
 } from "@mui/icons-material";
 import FlexBetween from "components/FlexBetween";
@@ -17,12 +17,13 @@ import {
   Box,
   Typography,
   IconButton,
-  InputBase,
+  // InputBase,
   Toolbar,
   Menu,
   MenuItem,
   useTheme,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
@@ -31,7 +32,12 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
-  const handleClose = () => setAnchorEl(null);
+
+  const navigate = useNavigate();
+  const handleClose = () => {
+      navigate('/signin');
+      localStorage.clear();
+  };
 
   return (
     <AppBar
@@ -53,10 +59,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             gap="3rem"
             p="0.1rem 1.5rem"
           >
-            <InputBase placeholder="Search..." />
+            {/* <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
-            </IconButton>
+            </IconButton> */}
           </FlexBetween>
         </FlexBetween>
 
@@ -69,9 +75,9 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               <LightModeOutlined sx={{ fontSize: "25px" }} />
             )}
           </IconButton>
-          <IconButton>
+          {/* <IconButton>
             <SettingsOutlined sx={{ fontSize: "25px" }} />
-          </IconButton>
+          </IconButton> */}
 
           <FlexBetween>
             <Button

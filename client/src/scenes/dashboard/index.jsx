@@ -2,15 +2,15 @@ import React from "react";
 import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
 import {
-  DownloadOutlined,
-  Email,
-  PointOfSale,
-  PersonAdd,
-  Traffic,
+  // DownloadOutlined,
+  // Email,
+  // PointOfSale,
+  // PersonAdd,
+  // Traffic,
 } from "@mui/icons-material";
 import {
   Box,
-  Button,
+  // Button,
   Typography,
   useTheme,
   useMediaQuery,
@@ -44,16 +44,16 @@ const Dashboard = () => {
     },
     {
       field: "products",
-      headerName: "# of Products",
+      headerName: "No. of Courses",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "cost",
-      headerName: "Cost",
+      headerName: "Students enrolled",
       flex: 1,
-      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+      renderCell: (params) => `${Number(params.value).toFixed(2)}`,
     },
   ];
 
@@ -63,7 +63,7 @@ const Dashboard = () => {
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         <Box>
-          <Button
+          {/* <Button
             sx={{
               backgroundColor: theme.palette.secondary.light,
               color: theme.palette.background.alt,
@@ -74,7 +74,7 @@ const Dashboard = () => {
           >
             <DownloadOutlined sx={{ mr: "10px" }} />
             Download Reports
-          </Button>
+          </Button> */}
         </Box>
       </FlexBetween>
 
@@ -90,26 +90,28 @@ const Dashboard = () => {
       >
         {/* ROW 1 */}
         <StatBox
-          title="Total Customers"
-          value={data && data.totalCustomers}
+          title="Total Students"
+          // value={data && data.totalCustomers}
+          value="3000"
           increase="+14%"
-          description="Since last month"
-          icon={
-            <Email
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          description="Since last Year"
+          // icon={
+          //   <Email
+          //     sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+          //   />
+          // }
         />
         <StatBox
-          title="Sales Today"
-          value={data && data.todayStats.totalSales}
-          increase="+21%"
-          description="Since last month"
-          icon={
-            <PointOfSale
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          title="Total Faculty"
+          // value={data && data.todayStats.totalSales}
+          value="50"
+          increase="+11%"
+          description="Since last Semester"
+          // icon={
+          //   <PointOfSale
+          //     sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+          //   />
+          // }
         />
         <Box
           gridColumn="span 8"
@@ -121,26 +123,28 @@ const Dashboard = () => {
           <OverviewChart view="sales" isDashboard={true} />
         </Box>
         <StatBox
-          title="Monthly Sales"
-          value={data && data.thisMonthStats.totalSales}
-          increase="+5%"
-          description="Since last month"
-          icon={
-            <PersonAdd
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          title="No. of Courses"
+          // value={data && data.thisMonthStats.totalSales}
+          value="15"
+          increase="+2%"
+          description="Since last Year"
+          // icon={
+          //   <PersonAdd
+          //     sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+          //   />
+          // }
         />
         <StatBox
-          title="Yearly Sales"
-          value={data && data.yearlySalesTotal}
-          increase="+43%"
-          description="Since last month"
-          icon={
-            <Traffic
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          title="Total Departments"
+          // value={data && data.yearlySalesTotal}
+          value="5"
+          increase="+2%"
+          description="Since last Year"
+          // icon={
+          //   <Traffic
+          //     sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+          //   />
+          // }
         />
 
         {/* ROW 2 */}
@@ -188,7 +192,7 @@ const Dashboard = () => {
           borderRadius="0.55rem"
         >
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-            Sales By Category
+            Students By Courses
           </Typography>
           <BreakdownChart isDashboard={true} />
           <Typography
@@ -196,8 +200,7 @@ const Dashboard = () => {
             fontSize="0.8rem"
             sx={{ color: theme.palette.secondary[200] }}
           >
-            Breakdown of real states and information via category for revenue
-            made for this year and total sales.
+                       Breakdown of Students According to subjects.
           </Typography>
         </Box>
       </Box>

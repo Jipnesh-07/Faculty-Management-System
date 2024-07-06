@@ -5,7 +5,7 @@ import {
   CardActions,
   CardContent,
   Collapse,
-  Button,
+  // Button,
   Typography,
   Rating,
   useTheme,
@@ -25,7 +25,7 @@ const Product = ({
   stat,
 }) => {
   const theme = useTheme();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded] = useState(false);
 
   return (
     <Card
@@ -47,20 +47,21 @@ const Product = ({
           {name}
         </Typography>
         <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
-          ${Number(price).toFixed(2)}
+          <br>
+          </br>
         </Typography>
         <Rating value={rating} readOnly />
 
         <Typography variant="body2">{description}</Typography>
       </CardContent>
       <CardActions>
-        <Button
+        {/* <Button
           variant="primary"
           size="small"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           See More
-        </Button>
+        </Button> */}
       </CardActions>
       <Collapse
         in={isExpanded}
@@ -85,13 +86,13 @@ const Product = ({
   );
 };
 
-const Products = () => {
+const Faculty = () => {
   const { data, isLoading } = useGetProductsQuery();
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="PRODUCTS" subtitle="See your list of products." />
+      <Header title="FACULTY" subtitle="See your list of Faculties." />
       {data || !isLoading ? (
         <Box
           mt="20px"
@@ -136,4 +137,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Faculty;

@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const id = localStorage.getItem("userID");
+// console.log("index console is ", id);
+
+
 const initialState = {
   mode: "dark",
-  userId: "63701cc1f03239b7f700000e",
+  userId: `${id}`,
 };
 
 export const globalSlice = createSlice({

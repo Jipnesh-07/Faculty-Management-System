@@ -3,12 +3,12 @@ import { Box, useTheme } from "@mui/material";
 import Header from "components/Header";
 import { ResponsiveLine } from "@nivo/line";
 import { useGetSalesQuery } from "state/api";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Daily = () => {
-  const [startDate, setStartDate] = useState(new Date("2021-02-01"));
-  const [endDate, setEndDate] = useState(new Date("2021-03-01"));
+const Weekly = () => {
+  const [startDate] = useState(new Date("01"));
+  const [endDate] = useState(new Date("05"));
   const { data } = useGetSalesQuery();
   const theme = useTheme();
 
@@ -22,7 +22,7 @@ const Daily = () => {
       data: [],
     };
     const totalUnitsLine = {
-      id: "totalUnits",
+      // id: "totalUnits",
       color: theme.palette.secondary[600],
       data: [],
     };
@@ -36,10 +36,10 @@ const Daily = () => {
           ...totalSalesLine.data,
           { x: splitDate, y: totalSales },
         ];
-        totalUnitsLine.data = [
-          ...totalUnitsLine.data,
-          { x: splitDate, y: totalUnits },
-        ];
+        // totalUnitsLine.data = [
+        //   ...totalUnitsLine.data,
+        //   { x: splitDate, y: totalUnits },
+        // ];
       }
     });
 
@@ -49,9 +49,9 @@ const Daily = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="DAILY SALES" subtitle="Chart of daily sales" />
+      <Header title="WEEKLY" subtitle="Chart of Weekly Rating" />
       <Box height="75vh">
-        <Box display="flex" justifyContent="flex-end">
+        {/* <Box display="flex" justifyContent="flex-end">
           <Box>
             <DatePicker
               selected={startDate}
@@ -71,7 +71,7 @@ const Daily = () => {
               minDate={startDate}
             />
           </Box>
-        </Box>
+        </Box> */}
 
         {data ? (
           <ResponsiveLine
@@ -184,4 +184,4 @@ const Daily = () => {
   );
 };
 
-export default Daily;
+export default Weekly;

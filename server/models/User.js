@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: false,
       min: 2,
       max: 100,
     },
@@ -19,16 +19,29 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
-    city: String,
-    state: String,
-    country: String,
-    occupation: String,
-    phoneNumber: String,
-    transactions: Array,
+    city: {
+      type: String,
+      default:"mansa"},
+    state: {
+      type: String,
+      default:"Punjab"},
+    country: {
+      type: String,
+      default:"Bharat"},
+    occupation: {
+      type: String,
+      default:"Computer Science"},
+    phoneNumber: {
+      type: String,
+      default:"9856985633"},
+    transactions: {
+      type: Array,
+      default:[],
+    },  
     role: {
       type: String,
-      enum: ["user", "admin", "superadmin"],
-      default: "admin",
+      enum: ["user", "admin", "superadmin","student"],
+      default: "student",
     },
   },
   { timestamps: true }

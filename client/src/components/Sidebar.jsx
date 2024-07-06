@@ -13,19 +13,19 @@ import {
   useTheme,
 } from "@mui/material";
 import {
-  SettingsOutlined,
+  // SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
-  ShoppingCartOutlined,
+  // ShoppingCartOutlined,
   Groups2Outlined,
   ReceiptLongOutlined,
-  PublicOutlined,
+  // PublicOutlined,
   PointOfSaleOutlined,
   TodayOutlined,
-  CalendarMonthOutlined,
+  // CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
+  // TrendingUpOutlined,
   PieChartOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
@@ -37,29 +37,30 @@ const navItems = [
   {
     text: "Dashboard",
     icon: <HomeOutlined />,
-  },
+  },  
   {
-    text: "Client Facing",
+    text: "User Data",
     icon: null,
   },
   {
-    text: "Products",
-    icon: <ShoppingCartOutlined />,
-  },
-  {
-    text: "Customers",
+    text: "Faculty",
     icon: <Groups2Outlined />,
   },
   {
-    text: "Transactions",
+    text: "Students",
+    //text: "Customers",
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: "CoursesEnrolled",
     icon: <ReceiptLongOutlined />,
   },
+  // {
+  //   text: "Geography",
+  //   icon: <PublicOutlined />,
+  // },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
-  },
-  {
-    text: "Sales",
+    text: "Statastics",
     icon: null,
   },
   {
@@ -67,13 +68,13 @@ const navItems = [
     icon: <PointOfSaleOutlined />,
   },
   {
-    text: "Daily",
+    text: "Weekly",
     icon: <TodayOutlined />,
   },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
-  },
+  // {
+  //   text: "Monthly",
+  //   icon: <CalendarMonthOutlined />,
+  // },
   {
     text: "Breakdown",
     icon: <PieChartOutlined />,
@@ -86,14 +87,14 @@ const navItems = [
     text: "Admin",
     icon: <AdminPanelSettingsOutlined />,
   },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
-  },
+  // {
+  //   text: "Performance",
+  //   icon: <TrendingUpOutlined />,
+  // },
 ];
 
 const Sidebar = ({
-  user,
+  user, 
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -108,6 +109,9 @@ const Sidebar = ({
     setActive(pathname.substring(1));
   }, [pathname]);
 
+  if (pathname === '/signin' || pathname === '/signup') {
+    return null;
+  }
   return (
     <Box component="nav">
       {isSidebarOpen && (
@@ -132,7 +136,7 @@ const Sidebar = ({
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
-                    ECOMVISION
+                    FacultySync
                   </Typography>
                 </Box>
                 {!isNonMobile && (
@@ -220,12 +224,12 @@ const Sidebar = ({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
+              {/* <SettingsOutlined
                 sx={{
                   color: theme.palette.secondary[300],
                   fontSize: "25px ",
                 }}
-              />
+              /> */}
             </FlexBetween>
           </Box>
         </Drawer>

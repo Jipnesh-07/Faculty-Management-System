@@ -4,7 +4,7 @@ import { useGetCustomersQuery } from "state/api";
 import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
-const Customers = () => {
+const Students = () => {
   const theme = useTheme();
   const { data, isLoading } = useGetCustomersQuery();
   console.log("data", data);
@@ -40,7 +40,7 @@ const Customers = () => {
     },
     {
       field: "occupation",
-      headerName: "Occupation",
+      headerName: "Course",
       flex: 1,
     },
     {
@@ -52,7 +52,7 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="CUSTOMERS" subtitle="List of Customers" />
+      <Header title="STUDENTS" subtitle="List of Students" />
       <Box
         mt="40px"
         height="75vh"
@@ -92,4 +92,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Students;

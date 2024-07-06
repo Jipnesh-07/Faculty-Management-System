@@ -5,7 +5,7 @@ import { useGetTransactionsQuery } from "state/api";
 import Header from "components/Header";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 
-const Transactions = () => {
+const CoursesEnrolled = () => {
   const theme = useTheme();
 
   // values to be sent to the backend
@@ -28,11 +28,11 @@ const Transactions = () => {
       headerName: "ID",
       flex: 1,
     },
-    {
-      field: "userId",
-      headerName: "User ID",
-      flex: 1,
-    },
+    // {
+    //   field: "userId",
+    //   headerName: "User ID",
+    //   flex: 1,
+    // },
     {
       field: "createdAt",
       headerName: "CreatedAt",
@@ -40,22 +40,22 @@ const Transactions = () => {
     },
     {
       field: "products",
-      headerName: "# of Products",
+      headerName: "No. of Courses",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "cost",
-      headerName: "Cost",
+      headerName: "Students enrolled",
       flex: 1,
-      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+      renderCell: (params) => `${Number(params.value).toFixed(2)}`,
     },
   ];
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
+      <Header title="Courses" subtitle="Entire list of Courses" />
       <Box
         height="80vh"
         sx={{
@@ -108,4 +108,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default CoursesEnrolled;

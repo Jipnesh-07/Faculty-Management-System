@@ -10,7 +10,7 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
-// data imports
+
 import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductStat from "./models/ProductStat.js";
@@ -43,6 +43,36 @@ app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
+app.post('/fms/signup', (async(req, res) => {
+  try {
+    const newUser = await User.create(({
+        name : req.body.name,
+        email : req.body.email,
+        password : req.body.password
+    }));
+
+    res.json({success : true, newUser});
+} catch (error) {
+    console.log(error.message);
+}
+}))
+
+
+app.post('/fms/signin', (async(req, res) => {
+  try {
+    const email = req.body.email;
+    const password = req.body.password;
+    
+    const userData = await User.findOne({email : email, password : password});
+     console.log("user data", userData);
+    if (userData){
+      res.json({sucess : true, userData});
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}))
+
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 mongoose
@@ -62,3 +92,4 @@ mongoose
     // User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} did not connect`));
+

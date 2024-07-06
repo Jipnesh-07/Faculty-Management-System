@@ -40,7 +40,7 @@ const Admin = () => {
     },
     {
       field: "occupation",
-      headerName: "Occupation",
+      headerName: "Department",
       flex: 1,
     },
     {

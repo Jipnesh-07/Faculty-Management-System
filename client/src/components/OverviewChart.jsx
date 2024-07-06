@@ -24,7 +24,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
     Object.values(monthlyData).reduce(
       (acc, { month, totalSales, totalUnits }) => {
-        const curSales = acc.sales + totalSales;
+        const curSales = 0 + totalSales;
         const curUnits = acc.units + totalUnits;
 
         totalSalesLine.data = [
@@ -117,7 +117,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         tickRotation: 0,
         legend: isDashboard
           ? ""
-          : `Total ${view === "sales" ? "Revenue" : "Units"} for Year`,
+          : `Total ${view === "sales" ? "Progress" : "Units"}`,
         legendOffset: -60,
         legendPosition: "middle",
       }}
